@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Riot.js Clocks</title>
+</head>
+<body>
+
+    <clock></clock>
+    <digital-clock></digital-clock>
+    <clock-set></clock-set>
+    <fav-world-times></fav-world-times>
+    <all-zones-dropdown></all-zones-dropdown>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js" integrity="sha256-zG8v+NWiZxmjNi+CvUYnZwKtHzFtdO8cAKUIdB8+U9I=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.13/moment-timezone-with-data.min.js" integrity="sha256-Mbm+oB/+8ujzEer9u83ZRKEhlPohbY9USJ4VpxiNR9w=" crossorigin="anonymous"></script>
+    <script src="https://rawgit.com/riot/riot/master/riot%2Bcompiler.min.js"></script>
+    <script src="clock.tag" type="riot/tag"></script>
+    <script src="digitalClock.tag" type="riot/tag"></script>
+    <script src="clockSet.tag" type="riot/tag"></script>
+    <script src="favWorldTimes.tag" type="riot/tag"></script>
+    <script src="allZonesDropdown.tag" type="riot/tag"></script>
+
+    <script>
+        const bus = {};
+        riot.observable(bus);
+        riot.mount('clock,digital-clock,clock-set,all-zones-dropdown', {bus: bus});
+        riot.mount('fav-world-times', {
+            bus: bus,
+            worldTimes:[
+                {
+                    title: 'New York',
+                    timezone: 'America/New_York',
+                },
+                {
+                    title: 'Los Angeles',
+                    timezone: 'America/Los_Angeles',
+                },
+                {
+                    title: 'Tokyo',
+                    timezone: 'Asia/Tokyo',
+                }
+            ]
+        });
+    </script>
+</body>
+</html>
