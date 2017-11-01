@@ -3,6 +3,34 @@
 <head>
   <meta charset="UTF-8">
   <title>Riot.js Clocks</title>
+  <style>
+    body {
+        display: grid;
+        grid-template-columns: 1fr 2fr 1fr;
+        grid-template-rows: auto;
+        grid-template-areas: 
+            "side-clock-one main-clock side-clock-two"
+            "left-control center-control right-control";
+    }
+    clock {
+        grid-area: main-clock;
+    }
+    digital-clock {
+        grid-area: side-clock-one;
+    }
+    clock-set {
+        grid-area: center-control;
+        margin: auto;
+    }
+    fav-world-times {
+        grid-area: left-control;
+        margin: auto;
+    }
+    all-zones-dropdown {
+        grid-area: right-control;
+        margin: auto;
+    }
+    </style>
 </head>
 <body>
 
