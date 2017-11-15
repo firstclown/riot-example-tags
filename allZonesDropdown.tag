@@ -14,7 +14,7 @@
     });
 
     setTime(e) {
-        opts.bus.trigger('new_date_set', moment().tz(e.target.value).seconds(0));
+        opts.bus.trigger('new_zone_set', e.target.value);
     }
     </script>
 </all-zones-dropdown>

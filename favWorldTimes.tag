@@ -9,7 +9,7 @@
 
         setTime(e) {
             e.preventDefault();
-            opts.bus.trigger('new_date_set', moment().tz(e.target.getAttribute('data-value')).seconds(0));
+            opts.bus.trigger('new_zone_set', e.target.getAttribute('data-value'));
         }
     </script>
 </fav-world-times>

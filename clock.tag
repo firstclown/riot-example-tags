@@ -54,16 +54,15 @@
 
 <script>
     var self = this;
+    self.timezone = null;
 
     this.on('mount', function(){
         this.intervalTimer = setInterval(this.setDate, 1000);
         this.setDate();
     });
 
-    opts.bus.on('new_date_set', function(newDate) {
-        console.log(newDate);
-        self.setDate(newDate);
-        clearInterval(self.intervalTimer);
+    opts.bus.on('new_zone_set', function(newZone) {
+        self.timezone = newZone;
     });
 
     setDate(date) {
@@ -72,6 +71,9 @@
         const hourHand = document.querySelector('.hour-hand');
         if(! date) {
             date = moment();
+        }
+        if(self.timezone !== null) {
+            date.tz(self.timezone);
         }
         const seconds = date.seconds();
         const secondsDegrees = ((seconds / 60) * 360) - 90;

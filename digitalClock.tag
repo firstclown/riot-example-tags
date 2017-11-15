@@ -27,20 +27,23 @@
     
     <script>
         const self = this;
+        self.timezone = null;
     
         this.on('mount', function(){
             this.intervalTimer = setInterval(this.setDate, 1000);
             this.setDate();
         });
     
-        opts.bus.on('new_date_set', function(newDate) {
-            self.setDate(newDate);
-            clearInterval(self.intervalTimer);
+        opts.bus.on('new_zone_set', function(newZone) {
+            self.timezone = newZone;
         });
     
         setDate(date) {
             if(! date) {
                 date = moment();
+            }
+            if(self.timezone !== null) {
+                date.tz(self.timezone);
             }
             self.time = date.format("HH:mm:ss");
             self.update();

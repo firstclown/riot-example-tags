@@ -15,8 +15,11 @@
     clock {
         grid-area: main-clock;
     }
-    digital-clock {
+    digital-clock#left-clock {
         grid-area: side-clock-one;
+    }
+    digital-clock#right-clock {
+        grid-area: side-clock-two;
     }
     clock-set {
         grid-area: center-control;
@@ -35,7 +38,8 @@
 <body>
 
     <clock></clock>
-    <digital-clock></digital-clock>
+    <digital-clock id="left-clock"></digital-clock>
+    <digital-clock id="right-clock"></digital-clock>
     <clock-set></clock-set>
     <fav-world-times></fav-world-times>
     <all-zones-dropdown></all-zones-dropdown>
@@ -49,11 +53,17 @@
     <script src="allZonesDropdown.tag" type="riot/tag"></script>
 
     <script>
-        const bus = {};
-        riot.observable(bus);
-        riot.mount('clock,digital-clock,clock-set,all-zones-dropdown', {bus: bus});
+        const main_bus = {};
+        const left_bus = {};
+        const right_bus = {};
+        riot.observable(main_bus);
+        riot.observable(left_bus);
+        riot.observable(right_bus);
+        riot.mount('digital-clock#right-clock,all-zones-dropdown', {bus:right_bus});
+        riot.mount('digital-clock#left-clock', {bus:left_bus});
+        riot.mount('clock,clock-set', {bus: main_bus});
         riot.mount('fav-world-times', {
-            bus: bus,
+            bus: left_bus,
             worldTimes:[
                 {
                     title: 'New York',
