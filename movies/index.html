@@ -3,48 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <title>Riot.js Movies</title>
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
   <style>
-    body {
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        grid-template-rows: auto;
-        grid-template-areas: 
-            "side-clock-one main-clock side-clock-two"
-            "left-control center-control right-control";
-    }
-    clock {
-        grid-area: main-clock;
-    }
-    digital-clock#left-clock {
-        grid-area: side-clock-one;
-    }
-    digital-clock#right-clock {
-        grid-area: side-clock-two;
-    }
-    clock-set {
-        grid-area: center-control;
-        margin: auto;
-    }
-    fav-world-times {
-        grid-area: left-control;
-        margin: auto;
-    }
-    all-zones-dropdown {
-        grid-area: right-control;
-        margin: auto;
-    }
+
+
+
     </style>
 </head>
 <body>
+    <div class="container">
 
-    <movie-search></movie-search>
+        <movie-search></movie-search>
+        <movie-list></movie-list>
+        <movie-detail></movie-detail>
+
+    </div>
+
+    
     <script src="https://rawgit.com/riot/riot/master/riot%2Bcompiler.min.js"></script>
     <script src="movieSearch.tag" type="riot/tag"></script>
+    <script src="movieList.tag" type="riot/tag"></script>
+    <script src="movieDetailDialog.tag" type="riot/tag"></script>
 
     <script>
         var bus = {};
         riot.observable(bus);
         riot.mount('movie-search', {bus: bus});
+        riot.mount('movie-list', {bus: bus});
+        riot.mount('movie-detail', {bus: bus});
     </script>
 </body>
 </html>
