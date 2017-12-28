@@ -16,18 +16,19 @@
 
         <movie-search></movie-search>
         <movie-favorites></movie-favorites>
-        <!-- <movie-tiles></movie-tiles> -->
-        <movie-list></movie-list>
+        <movie-tiles></movie-tiles>
+        <!-- <movie-list></movie-list> -->
         <movie-detail></movie-detail>
 
     </div>
 
     
     <script src="https://rawgit.com/riot/riot/master/riot%2Bcompiler.min.js"></script>
+    <script src="apiMixin.js"></script>
     <script src="movieSearch.tag" type="riot/tag"></script>
     <script src="movieFavorites.tag" type="riot/tag"></script>
-    <!-- <script src="movieTiles.tag" type="riot/tag"></script> -->
-    <script src="movieList.tag" type="riot/tag"></script>
+    <script src="movieTiles.tag" type="riot/tag"></script>
+    <!-- <script src="movieList.tag" type="riot/tag"></script> -->
     <script src="movieDetailDialog.tag" type="riot/tag"></script>
 
     <script>
@@ -41,8 +42,8 @@
                 { Title: "Ant-Man", imdbID: 'tt0478970' },
             ]
         });
-        // riot.mount('movie-tiles', {bus: bus});
-        riot.mount('movie-list', {bus: bus});
+        riot.mount('movie-tiles', {bus: bus});
+        // riot.mount('movie-list', {bus: bus});
         riot.mount('movie-detail', {bus: bus});
     </script>
 </body>
