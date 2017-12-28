@@ -1,17 +1,41 @@
-<movie-list>
+<movie-tiles>
     <!-- HTML Structure -->
-    <table class="table">
-        <tr each="{movies}" onclick="{selectMovie}">
-            <th>{Title}</th>
-            <td>{Year}</td>
-        </tr>
-    </table>
+    <div class="movie-listing well" each="{movies}">
+        <a href="#" onclick="{selectMovie}"><h3 class="title">{Title}</h3></a>
+        <h4 class="year">({Year})</h4>
+        <img src="{Poster}"/>
 
-    <!-- CSS style -->
+    </div>
+    <!-- CSS Style -->
     <style>
-    tr {
-        cursor: pointer;
-    }
+        :scope {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        
+        .movie-listing {
+            display: inline-block;
+            text-align: center;
+            width: 300px;
+        }
+
+        .movie-listing img {
+            width: 150px;
+            display: block;
+            margin:auto;
+        }
+
+        .title {
+            display: inline;
+            font-weight: bold;
+            font-size: 2em;
+        }
+
+        .year {
+            display: inline;
+            color: lightgrey;
+        }
     </style>
 
     <!-- JavaScript behavior -->
@@ -40,4 +64,6 @@
             });
         }
     </script>
-</movie-list>
+
+
+</movie-tiles>

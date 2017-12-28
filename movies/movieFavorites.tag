@@ -1,28 +1,18 @@
-<movie-list>
+<movie-favorites>
     <!-- HTML Structure -->
-    <table class="table">
-        <tr each="{movies}" onclick="{selectMovie}">
-            <th>{Title}</th>
-            <td>{Year}</td>
-        </tr>
-    </table>
+    <ul class="list-inline">
+        <li each="{movies}" onclick="{selectMovie}">{Title}</li>
+    </ul>
 
     <!-- CSS style -->
     <style>
-    tr {
-        cursor: pointer;
-    }
+
     </style>
 
     <!-- JavaScript behavior -->
     <script>
         const self = this;
-        self.movies = [];
-
-        opts.bus.on('newMovieList', function(newList) {
-            self.movies = newList;
-            self.update();
-        });
+        self.movies = opts.movies;
 
         self.selectMovie = function(event) {
             event.preventDefault();
@@ -40,4 +30,5 @@
             });
         }
     </script>
-</movie-list>
+
+</movie-favorites>

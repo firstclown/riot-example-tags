@@ -9,13 +9,14 @@
   <style>
 
 
-
     </style>
 </head>
 <body>
     <div class="container">
 
         <movie-search></movie-search>
+        <movie-favorites></movie-favorites>
+        <!-- <movie-tiles></movie-tiles> -->
         <movie-list></movie-list>
         <movie-detail></movie-detail>
 
@@ -24,6 +25,8 @@
     
     <script src="https://rawgit.com/riot/riot/master/riot%2Bcompiler.min.js"></script>
     <script src="movieSearch.tag" type="riot/tag"></script>
+    <script src="movieFavorites.tag" type="riot/tag"></script>
+    <!-- <script src="movieTiles.tag" type="riot/tag"></script> -->
     <script src="movieList.tag" type="riot/tag"></script>
     <script src="movieDetailDialog.tag" type="riot/tag"></script>
 
@@ -31,6 +34,14 @@
         var bus = {};
         riot.observable(bus);
         riot.mount('movie-search', {bus: bus});
+        riot.mount('movie-favorites', {bus: bus,
+            movies: [
+                { Title: "Wonder Woman", imdbID: 'tt0451279', },
+                { Title: "Deadpool", imdbID: 'tt1431045', },
+                { Title: "Ant-Man", imdbID: 'tt0478970' },
+            ]
+        });
+        // riot.mount('movie-tiles', {bus: bus});
         riot.mount('movie-list', {bus: bus});
         riot.mount('movie-detail', {bus: bus});
     </script>

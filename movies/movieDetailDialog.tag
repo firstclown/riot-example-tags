@@ -8,6 +8,9 @@
               <h4 class="modal-title">{movie.Title}</h4>
             </div>
             <div class="modal-body">
+            <div>
+                <img class="center-block" src="{movie.Poster}"/>
+            </div>
               <p>{movie.Title} was released on {movie.Released}. It is rated {movie.Rated} and runs for {movie.Runtime}.</p>
               <p>{movie.Plot}</p>
             </div>
@@ -17,7 +20,9 @@
 <!-- CSS Style -->
 
     <style>
-    
+        p {
+            margin-top: 20px;
+        }
     </style>
 
 <!-- JavaScript behavior -->
