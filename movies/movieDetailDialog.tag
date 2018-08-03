@@ -27,13 +27,12 @@
 
 <!-- JavaScript behavior -->
     <script>
-        const self = this;
-        self.movie = {};
+        this.movie = {};
 
-        opts.bus.on('showMovie', function(movie) {
-            self.movie = movie;
-            self.update();
-            $(self.root).find('#movie-modal').modal();
+        opts.bus.on('showMovie', (movie) => {
+            this.movie = movie;
+            this.update();
+            $(this.root).find('#movie-modal').modal();
         });
     </script>
 

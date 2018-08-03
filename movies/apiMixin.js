@@ -1,6 +1,6 @@
 const apiMixin = {
-    init: function(opts) {
-        this.selectMovie = function(event) {
+    init: (opts) => {
+        this.selectMovie = (event) => {
             event.preventDefault();
             fetch('http://www.omdbapi.com/?apikey=e78b4fa0&i=' + event.item.imdbID, {
                 method: 'GET',

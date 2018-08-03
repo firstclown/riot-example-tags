@@ -16,14 +16,13 @@
 
     <!-- JavaScript behavior -->
     <script>
-        const self = this;
-        self.movies = [];
+        this.movies = [];
 
-        opts.bus.on('newMovieList', function(newList) {
-            self.movies = newList;
-            self.update();
+        opts.bus.on('newMovieList', (newList) => {
+            this.movies = newList;
+            this.update();
         });
 
-        self.mixin('apiMixin');
+        this.mixin('apiMixin');
     </script>
 </movie-list>

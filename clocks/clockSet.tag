@@ -1,8 +1,8 @@
 <clock-set>
 
     <form onsubmit={setTime}>
-        Hour: <input type="number" name="newHour"/>
-        Minute: <input type="number" name="newMinute"/>
+        Hour: <input type="number" name="newHour" ref="newHour"/>
+        Minute: <input type="number" name="newMinute" ref="newMinute"/>
         <button type="submit">Set Time</button> 
     </form>
 
@@ -11,8 +11,8 @@
 
         setTime(e) {
             e.preventDefault();
-            const newHour = document.querySelector('input[name=newHour]').value;
-            const newMinute = document.querySelector('input[name=newMinute]').value;
+            const newHour = this.refs.newHour.value;
+            const newMinute = this.refs.newMinute.value;
             const newTime = moment();
             newTime.hours(newHour);
             newTime.minutes(newMinute);

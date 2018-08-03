@@ -11,10 +11,9 @@
 
     <!-- JavaScript behavior -->
     <script>
-        const self = this;
-        self.movies = opts.movies;
+        this.movies = opts.movies;
 
-        self.mixin('apiMixin');
+        this.mixin('apiMixin');
     </script>
 
 </movie-favorites>

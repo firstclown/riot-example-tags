@@ -4,81 +4,29 @@
   <meta charset="UTF-8">
   <title>Riot.js Clocks</title>
   <style>
-    body {
-        display: grid;
-        grid-template-columns: 1fr 2fr 1fr;
-        grid-template-rows: auto;
-        grid-template-areas: 
-            "side-clock-one main-clock side-clock-two"
-            "left-control center-control right-control";
-    }
-    clock {
-        grid-area: main-clock;
-    }
-    digital-clock#left-clock {
-        grid-area: side-clock-one;
-    }
-    digital-clock#right-clock {
-        grid-area: side-clock-two;
-    }
-    clock-set {
-        grid-area: center-control;
-        margin: auto;
-    }
-    fav-world-times {
-        grid-area: left-control;
-        margin: auto;
-    }
-    all-zones-dropdown {
-        grid-area: right-control;
-        margin: auto;
-    }
+      body{
+        text-align:center;
+      }
     </style>
 </head>
 <body>
 
     <clock></clock>
-    <digital-clock id="left-clock"></digital-clock>
-    <digital-clock id="right-clock"></digital-clock>
-    <clock-set></clock-set>
-    <fav-world-times></fav-world-times>
+    <digital-clock ></digital-clock>
     <all-zones-dropdown></all-zones-dropdown>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.19.1/moment.min.js" integrity="sha256-zG8v+NWiZxmjNi+CvUYnZwKtHzFtdO8cAKUIdB8+U9I=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.13/moment-timezone-with-data.min.js" integrity="sha256-Mbm+oB/+8ujzEer9u83ZRKEhlPohbY9USJ4VpxiNR9w=" crossorigin="anonymous"></script>
     <script src="https://rawgit.com/riot/riot/master/riot%2Bcompiler.min.js"></script>
     <script src="clock.tag" type="riot/tag"></script>
     <script src="digitalClock.tag" type="riot/tag"></script>
-    <script src="clockSet.tag" type="riot/tag"></script>
-    <script src="favWorldTimes.tag" type="riot/tag"></script>
     <script src="allZonesDropdown.tag" type="riot/tag"></script>
 
     <script>
         const main_bus = {};
-        const left_bus = {};
-        const right_bus = {};
         riot.observable(main_bus);
-        riot.observable(left_bus);
-        riot.observable(right_bus);
-        riot.mount('digital-clock#right-clock,all-zones-dropdown', {bus:right_bus});
-        riot.mount('digital-clock#left-clock', {bus:left_bus});
-        riot.mount('clock,clock-set', {bus: main_bus});
-        riot.mount('fav-world-times', {
-            bus: left_bus,
-            worldTimes:[
-                {
-                    title: 'New York',
-                    timezone: 'America/New_York',
-                },
-                {
-                    title: 'Los Angeles',
-                    timezone: 'America/Los_Angeles',
-                },
-                {
-                    title: 'Tokyo',
-                    timezone: 'Asia/Tokyo',
-                }
-            ]
-        });
+        riot.mount('digital-clock', {bus:main_bus});
+        riot.mount('clock', {bus: main_bus});
+        riot.mount('all-zones-dropdown', {bus:main_bus});
     </script>
 </body>
 </html>

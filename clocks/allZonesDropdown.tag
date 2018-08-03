@@ -5,12 +5,11 @@
     </select>
 
     <script>
-    const self = this;
 
-    self.on('mount', () => {
-        self.zones = moment.tz.names();
+    this.on('mount', () => {
+        this.zones = moment.tz.names();
         console.log(self.zones);
-        self.update();
+        this.update();
     });
 
     setTime(e) {

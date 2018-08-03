@@ -2,9 +2,9 @@
   
   <div class="clock">
     <div class="clock-face">
-      <div class="hand hour-hand"></div>
-      <div class="hand min-hand"></div>
-      <div class="hand second-hand"></div>
+      <div class="hand hour-hand" ref="hour-hand"></div>
+      <div class="hand min-hand" ref="min-hand"></div>
+      <div class="hand second-hand" ref="second-hand"></div>
     </div>
   </div>
 
@@ -53,27 +53,26 @@
 </style>
 
 <script>
-    var self = this;
-    self.timezone = null;
+    this.timezone = null;
 
-    this.on('mount', function(){
+    this.on('mount', () => {
         this.intervalTimer = setInterval(this.setDate, 1000);
         this.setDate();
     });
 
-    opts.bus.on('new_zone_set', function(newZone) {
-        self.timezone = newZone;
+    opts.bus.on('new_zone_set', (newZone) => {
+        this.timezone = newZone;
     });
 
     setDate(date) {
-        const secondHand = document.querySelector('.second-hand');
-        const minsHand = document.querySelector('.min-hand');
-        const hourHand = document.querySelector('.hour-hand');
+        const secondHand = this.refs['second-hand'];
+        const minsHand = this.refs['min-hand'];
+        const hourHand = this.refs['hour-hand'];
         if(! date) {
             date = moment();
         }
-        if(self.timezone !== null) {
-            date.tz(self.timezone);
+        if(this.timezone !== null) {
+            date.tz(this.timezone);
         }
         const seconds = date.seconds();
         const secondsDegrees = ((seconds / 60) * 360) - 90;

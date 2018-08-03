@@ -5,7 +5,6 @@
     
 
     <script>
-        const self = this;
 
         setTime(e) {
             e.preventDefault();

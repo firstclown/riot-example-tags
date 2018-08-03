@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class="container">
-
+        <h1>MovieSearch!</h1>
         <movie-search></movie-search>
         <movie-favorites></movie-favorites>
         <movie-tiles></movie-tiles>
@@ -43,7 +43,7 @@
             ]
         });
         riot.mount('movie-tiles', {bus: bus});
-        // riot.mount('movie-list', {bus: bus});
+        riot.mount('movie-list', {bus: bus});
         riot.mount('movie-detail', {bus: bus});
     </script>
 </body>

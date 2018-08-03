@@ -26,27 +26,26 @@
     </style>
     
     <script>
-        const self = this;
-        self.timezone = null;
+        this.timezone = null;
     
-        this.on('mount', function(){
+        this.on('mount', () => {
             this.intervalTimer = setInterval(this.setDate, 1000);
             this.setDate();
         });
     
-        opts.bus.on('new_zone_set', function(newZone) {
-            self.timezone = newZone;
+        opts.bus.on('new_zone_set', (newZone) => {
+            this.timezone = newZone;
         });
     
         setDate(date) {
             if(! date) {
                 date = moment();
             }
-            if(self.timezone !== null) {
-                date.tz(self.timezone);
+            if(this.timezone !== null) {
+                date.tz(this.timezone);
             }
-            self.time = date.format("HH:mm:ss");
-            self.update();
+            this.time = date.format("HH:mm:ss");
+            this.update();
         };
     
     
